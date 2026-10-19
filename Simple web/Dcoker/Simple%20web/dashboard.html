@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+
+            width: 250px;
+            height: 100vh;
+
+            background: #111827;
+            color: white;
+
+            transition: 0.3s;
+            z-index: 1000;
+        }
+
+        /* Sidebar closed */
+        .sidebar.closed {
+            width: 70px;
+        }
+
+        /* Header */
+        .sidebar-header {
+            height: 70px;
+
+            display: flex;
+            align-items: center;
+
+            padding: 0 20px;
+
+            border-bottom: 1px solid #374151;
+        }
+
+        /* Menu button */
+        #menuButton {
+            background: none;
+            border: none;
+
+            color: white;
+            font-size: 28px;
+
+            cursor: pointer;
+        }
+
+        .title {
+            margin-left: 15px;
+            font-size: 18px;
+            white-space: nowrap;
+        }
+
+        /* Menu */
+        .menu {
+            margin-top: 20px;
+        }
+
+        .menu a {
+            display: flex;
+            align-items: center;
+
+            height: 55px;
+            padding: 0 20px;
+
+            color: white;
+            text-decoration: none;
+
+            transition: 0.2s;
+        }
+
+        .menu a:hover {
+            background: #374151;
+        }
+
+        .icon {
+            width: 30px;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .text {
+            margin-left: 15px;
+            white-space: nowrap;
+        }
+
+        /* Hide text when sidebar is closed */
+        .sidebar.closed .title,
+        .sidebar.closed .text {
+            display: none;
+        }
+
+        /* Center icons when closed */
+        .sidebar.closed .sidebar-header {
+            justify-content: center;
+            padding: 0;
+        }
+
+        .sidebar.closed .menu a {
+            justify-content: center;
+            padding: 0;
+        }
+
+        /* Main content */
+        .content {
+            margin-left: 250px;
+            padding: 40px;
+
+            transition: 0.3s;
+        }
+
+        .content.expanded {
+            margin-left: 70px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar" id="sidebar">
+
+        <div class="sidebar-header">
+
+            <button id="menuButton">
+                ☰
+            </button>
+
+            <span class="title">
+                My Dashboard
+            </span>
+
+        </div>
+
+        <div class="menu">
+
+            <a href="dashboard.html">
+                <span class="icon">🏠</span>
+                <span class="text">Dashboard</span>
+            </a>
+
+            <a href="users.html">
+                <span class="icon">👤</span>
+                <span class="text">Users</span>
+            </a>
+
+            <a href="reports.html">
+                <span class="icon">📊</span>
+                <span class="text">Reports</span>
+            </a>
+
+            <a href="logs.html">
+                <span class="icon">📋</span>
+                <span class="text">Logs</span>
+            </a>
+
+            <a href="security.html">
+                <span class="icon">🔐</span>
+                <span class="text">Security</span>
+            </a>
+
+            <a href="settings.html">
+                <span class="icon">⚙️</span>
+                <span class="text">Settings</span>
+            </a>
+
+            <a href="login.html">
+                <span class="icon">🚪</span>
+                <span class="text">Logout</span>
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- MAIN CONTENT -->
+    <div class="content" id="content">
+
+        <div class="card">
+
+            <br>
+            <H1>Welcome to the Admin Dashboard</H1>
+            <br>
+            <br>
+            <p>
+                Welcome Admin! This is your dashboard where you can manage users, view reports, check logs, and adjust settings. Use the sidebar to navigate through different sections of the admin panel.
+                You can check for everything you want from the sidebar, and if you want to logout, just click on the logout button.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+    <script>
+
+        const menuButton = document.getElementById("menuButton");
+        const sidebar = document.getElementById("sidebar");
+        const content = document.getElementById("content");
+
+        menuButton.addEventListener("click", function () {
+
+            sidebar.classList.toggle("closed");
+            content.classList.toggle("expanded");
+
+        });
+
+
+    </script>
+
+</body>
+</html>
